@@ -2,6 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+
+console.log(__dirname);
 module.exports = {
   // entry: 웹팩에게 어플리케이션이 어디서 시작하고 어디서부터 파일들을 묶을건지 시작점을 정해준다.
   entry: "./src/index.js",
@@ -12,10 +15,13 @@ module.exports = {
     rules: [
       // 첫번째 룰: ES6, JSX 구문 변환에 대한 것.
       {
-        test: /\\.(js|jsx)$/,
-        exclude: /node_modules|/,
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         loader: "babel-loader",
-        options: { presets: ["@babel/env", "@babel/preset-react"] },
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: ["react-refresh/babel"],
+        },
       },
       // 두번째 룰: CSS 처리에 대한 것. css-loader가 작동하기 위해서는 style-loader가 필요.
       {
@@ -33,17 +39,18 @@ module.exports = {
     publicPath: "/dist/",
     filename: "bundle.js",
   },
-  // webpack-dev-server의 옵션을 설정
   devServer: {
-    port: 3000,
+    static: {
+      directory: path.join(__dirname, "dist/"),
+    },
     hot: true,
+    port: 3000,
   },
+  // webpack-dev-server의 옵션을 설정
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
-      // 번들링된 JS를 주입하고 결과물을 옮길 대상이 되는 파일을 지정
       template: "./public/index.html",
     }),
-    new CleanWebpackPlugin(),
   ],
 };
