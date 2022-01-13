@@ -11,7 +11,7 @@ function AppBlock() {
 function App(props) {
   console.log("objssect");
   return (
-    <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center content-center shadow-gray-800 shadow-lg ">
+    <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center content-center shadow-gray-800 shadow-lg  backdrop-blur-xl">
       <h1 className="text-center text-3xl	font-bold ">
         <span role="img" aria-label="good-luck">
           🎱

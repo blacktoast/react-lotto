@@ -4,7 +4,7 @@ function CommonBtn({ children }) {
   return (
     <button
       type="button"
-      class="bg-cyan-500 rounded-md shadow-sm text-white p-1 shadow-zinc-400 mr-2 opacity-80 backdrop-blur-md w-20 flex-1 mt-4 sm:mt-0"
+      class="bg-cyan-500/80 rounded-md shadow-sm text-white p-1 shadow-zinc-400 mr-2  backdrop-blur-md w-20 flex-1 mt-4 sm:mt-0"
     >
       {children}
     </button>
