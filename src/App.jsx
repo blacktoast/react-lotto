@@ -1,6 +1,5 @@
 import React from "react";
-import "./App.css";
-import "./tailwind.css";
+import Test from "./Test";
 
 function App(props) {
   console.log("objssect");
@@ -13,6 +12,7 @@ function App(props) {
         <div className="bg-red-100">ChisstChat</div>
         <p className="text-gray-500">You have a new messssage!</p>
       </div>
+      <Test></Test>
     </div>
   );
 }
