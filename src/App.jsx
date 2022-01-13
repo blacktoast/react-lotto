@@ -1,19 +1,27 @@
 import React from "react";
+import PurchaseForm from "./Components/PurchaseForm";
+import TiketInfo from "./Components/TiketInfo";
+import WiningNumberForm from "./Components/WiningNumber";
 import Test from "./Test";
+
+function AppBlock() {
+  return <div className="bg-white w-96 h-48 flex rounded-lg"></div>;
+}
 
 function App(props) {
   console.log("objssect");
   return (
-    <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
-      <div className="shrink-0">
-        <h2>test</h2>
-      </div>
-      <div>
-        <div className="bg-red-100">ChisstChat</div>
-        <p className="text-gray-500">You have a new messssage!</p>
-      </div>
-      <Test></Test>
-    </div>
+    <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center content-center shadow-gray-800 shadow-lg ">
+      <h1 className="text-center text-3xl	font-bold ">
+        <span role="img" aria-label="good-luck">
+          🎱
+        </span>
+        {" 행운의 로또"}
+      </h1>
+      <PurchaseForm></PurchaseForm>
+      <TiketInfo></TiketInfo>
+      <WiningNumberForm></WiningNumberForm>
+    </main>
   );
 }
 
