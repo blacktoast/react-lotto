@@ -10,12 +10,19 @@ function AppBlock() {
 }
 
 function App(props) {
-  let [tickets, setTickets] = useState(0);
+  let [tickets, setTickets] = useState();
   let inputPrice = useRef();
   const buyLotto = useCallback((e) => {
-    console.log(inputPrice);
-    console.log(getLottoNumber());
+    let buyTicketNumber = Math.floor(inputPrice.current.value / 1000);
+    let newTickets = [];
+    console.log(buyTicketNumber);
+    [...Array(buyTicketNumber)].map((_, i) => {
+      newTickets.push(getLottoNumber());
+    });
+    setTickets(newTickets);
   }, []);
+  console.log(tickets);
+
   return (
     <>
       <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center  sm:items-center shadow-gray-800 shadow-lg  backdrop-blur-xl">
