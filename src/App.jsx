@@ -10,8 +10,10 @@ function AppBlock() {
 }
 
 function App(props) {
-  let [tickets, setTickets] = useState();
+  let [tickets, setTickets] = useState([]);
+  let test = useState("test");
   let inputPrice = useRef();
+
   const buyLotto = useCallback((e) => {
     let buyTicketNumber = Math.floor(inputPrice.current.value / 1000);
     let newTickets = [];
@@ -33,7 +35,7 @@ function App(props) {
           {" 행운의 로또"}
         </h1>
         <PurchaseForm onClick={buyLotto} onRef={inputPrice}></PurchaseForm>
-        <TiketInfo></TiketInfo>
+        <TiketInfo tickets={tickets}></TiketInfo>
         <WiningNumberForm></WiningNumberForm>
       </main>
     </>
