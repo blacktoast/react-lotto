@@ -8,7 +8,7 @@ function WiningNumberInput() {
 
 function WiningNumberForm(props) {
   return (
-    <form className="mt-9 mx-10">
+    <form className="mt-9 mx-10 sm:w-8/12">
       <label className="flex-auto inline-block mb-3 font-bold">
         지난 주 당첨번호 6개와 보너스 넘버 1개를 입력해주세요.
       </label>
