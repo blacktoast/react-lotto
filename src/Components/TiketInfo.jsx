@@ -12,7 +12,7 @@ function TiketInfo({ tickets, test }) {
           총 {tickets.length}개를 구매하였습니다.
         </label>
         <div class="flex-auto flex justify-end pr-1">
-          <label class="switch">
+          <label className="switch">
             <input type="checkbox" class="lotto-numbers-toggle-button" />
             <span class="text-base font-normal">번호보기</span>
           </label>
