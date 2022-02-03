@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
 function Ticket() {
   return <span class="mx-1 text-4xl">🎟️ </span>;
 }
 
-function TiketInfo({ tickets, test }) {
+function TiketInfo({ tickets }) {
+  const [showTicketInfo, setShowTicketInfo] = useState(false);
+  const onClickShowTicketInfo = useCallback(
+    (e) => {
+      setShowTicketInfo(!showTicketInfo);
+    },
+    [showTicketInfo]
+  );
+
   return (
     <section class="mt-9 mx-10 sm:w-8/12">
       <div class="flex ">
@@ -13,15 +21,21 @@ function TiketInfo({ tickets, test }) {
         </label>
         <div class="flex-auto flex justify-end pr-1">
           <label className="switch">
-            <input type="checkbox" class="lotto-numbers-toggle-button" />
+            <input
+              type="checkbox"
+              class="lotto-numbers-toggle-button"
+              onClick={onClickShowTicketInfo}
+            />
             <span class="text-base font-normal">번호보기</span>
           </label>
         </div>
       </div>
       <div class="flex flex-wrap">
-        {tickets.map((e) => {
-          return <Ticket />;
-        })}
+        {!showTicketInfo &&
+          tickets.map((e) => {
+            return <Ticket />;
+          })}
+        {showTicketInfo && <h1>test</h1>}
       </div>
     </section>
   );

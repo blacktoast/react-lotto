@@ -14,15 +14,17 @@ function App(props) {
   let test = useState("test");
   let inputPrice = useRef();
 
-  const buyLotto = useCallback((e) => {
-    let buyTicketNumber = Math.floor(inputPrice.current.value / 1000);
+  const onClickBuyLotto = useCallback((e) => {
+    let buyTicketNumber = Math.floor(parseInt(inputPrice.current.value) / 1000);
     let newTickets = [];
     console.log(buyTicketNumber);
     [...Array(buyTicketNumber)].map((_, i) => {
       newTickets.push(getLottoNumber());
     });
     setTickets(newTickets);
+    inputPrice.current.value = "";
   }, []);
+
   console.log(tickets);
 
   return (
@@ -34,7 +36,10 @@ function App(props) {
           </span>
           {" 행운의 로또"}
         </h1>
-        <PurchaseForm onClick={buyLotto} onRef={inputPrice}></PurchaseForm>
+        <PurchaseForm
+          onClick={onClickBuyLotto}
+          onRef={inputPrice}
+        ></PurchaseForm>
         <TiketInfo tickets={tickets}></TiketInfo>
         <WiningNumberForm></WiningNumberForm>
       </main>

@@ -14,11 +14,11 @@ function CommonBtn({ onClick, children }) {
 
 function PurchaseForm({ onClick, onRef = null }) {
   return (
-    <form class="mt-5 mx-10 sm:w-8/12">
-      <label class="mb-4  inline-block font-sans font-semibold">
+    <form className="mt-5 mx-10 sm:w-8/12">
+      <label className="mb-4  inline-block font-sans font-semibold">
         구입할 금액을 입력해주세요.
       </label>
-      <div class="flex">
+      <div className="flex">
         <input
           ref={onRef}
           type="number"

@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/blacktoast/react-lotto.git"
   },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -43,6 +46,7 @@
     "webpack-dev-server": "^4.7.2"
   },
   "dependencies": {
+    "@testing-library/user-event": "^13.5.0",
     "clean-webpack-plugin": "^4.0.0",
     "jest-dom": "^4.0.0",
     "react": "^17.0.2",
