@@ -4,6 +4,17 @@ function Ticket() {
   return <span class="mx-1 text-4xl">🎟️ </span>;
 }
 
+function TicketDetail({ ticket }) {
+  console.log(ticket.number, ticket);
+  return (
+    <>
+      <span>{ticket.id + 1}번 티켓</span>
+      <span class="mx-1 text-xl">{ticket.number.join(" ")}</span>
+      <br />
+    </>
+  );
+}
+
 function TiketInfo({ tickets }) {
   const [showTicketInfo, setShowTicketInfo] = useState(false);
   const onClickShowTicketInfo = useCallback(
@@ -30,13 +41,18 @@ function TiketInfo({ tickets }) {
           </label>
         </div>
       </div>
-      <div class="flex flex-wrap">
-        {!showTicketInfo &&
-          tickets.map((e) => {
-            return <Ticket />;
+      {!showTicketInfo && (
+        <div>
+          {tickets.map((e) => {
+            return <Ticket key={e.id} />;
           })}
-        {showTicketInfo && <h1>test</h1>}
-      </div>
+        </div>
+      )}
+
+      {showTicketInfo &&
+        tickets.map((e) => {
+          return <TicketDetail ticket={e} key={e.id} />;
+        })}
     </section>
   );
 }

@@ -19,7 +19,12 @@ function App(props) {
     let newTickets = [];
     console.log(buyTicketNumber);
     [...Array(buyTicketNumber)].map((_, i) => {
-      newTickets.push(getLottoNumber());
+      let num = getLottoNumber();
+      let newTicket = {
+        id: i,
+        number: num,
+      };
+      newTickets.push(newTicket);
     });
     setTickets(newTickets);
     inputPrice.current.value = "";
