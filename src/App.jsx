@@ -1,8 +1,8 @@
 import React, { useCallback, useRef, useState } from "react";
+import Modal from "./Components/Modal";
 import PurchaseForm from "./Components/PurchaseForm";
 import TiketInfo from "./Components/TiketInfo";
 import WiningNumberForm from "./Components/WiningNumber";
-import Test from "./Test";
 import { getLottoNumber } from "./utils/getLottoNumber";
 
 function AppBlock() {
@@ -11,8 +11,10 @@ function AppBlock() {
 
 function App(props) {
   let [tickets, setTickets] = useState([]);
+  const [showResultModal, setShowResultModal] = useState(false);
   let test = useState("test");
   let inputPrice = useRef();
+  let inputRefWinningNumber = useRef([]);
 
   const onClickBuyLotto = useCallback((e) => {
     let buyTicketNumber = Math.floor(parseInt(inputPrice.current.value) / 1000);
@@ -30,11 +32,11 @@ function App(props) {
     inputPrice.current.value = "";
   }, []);
 
-  console.log(tickets);
+  console.log(inputRefWinningNumber);
 
   return (
     <>
-      <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center  sm:items-center shadow-gray-800 shadow-lg  backdrop-blur-xl">
+      <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center  sm:items-center shadow-gray-800 shadow-lg  backdrop-blur-xl z-0">
         <h1 className="text-center text-3xl	font-bold ">
           <span role="img" aria-label="good-luck">
             🎱
@@ -46,8 +48,9 @@ function App(props) {
           onRef={inputPrice}
         ></PurchaseForm>
         <TiketInfo tickets={tickets}></TiketInfo>
-        <WiningNumberForm></WiningNumberForm>
+        <WiningNumberForm onRef={inputRefWinningNumber}></WiningNumberForm>
       </main>
+      {!showResultModal && <Modal />}
     </>
   );
 }

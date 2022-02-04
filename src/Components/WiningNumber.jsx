@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 const NumberInputStyle =
   "mx-1 text-center border-2 w-10 h-10 mt-4 border-black";
 
-function WiningNumberInput() {
-  return <input type="number" className={NumberInputStyle} />;
+function WiningNumberInput({ id, onRef }) {
+  console.log(onRef);
+  return (
+    <input
+      type="number"
+      className={NumberInputStyle}
+      ref={(el) => (onRef.current[id] = el)}
+    />
+  );
 }
 
-function WiningNumberForm(props) {
+function WiningNumberForm({ onRef }) {
+  const [winnigNumbers, setWinningNembers] = useState("");
+
+  function onChangeType(e) {
+    console.log(e);
+  }
   return (
     <form className="mt-9 mx-10 sm:w-8/12">
       <label className="flex-auto inline-block mb-3 font-bold">
@@ -18,28 +30,22 @@ function WiningNumberForm(props) {
             당첨 번호
           </h4>
           <div>
-            <WiningNumberInput />
-            <WiningNumberInput />
-            <WiningNumberInput />
-            <WiningNumberInput />
-            <WiningNumberInput />
-            <WiningNumberInput />
-            <WiningNumberInput />
+            {[...Array(6)].map((_, i) => {
+              return <WiningNumberInput key={i} id={i} onRef={onRef} />;
+            })}
           </div>
         </div>
         <div className="bonus-number-container flex-grow">
           <h4 className="mt-0 mb-3 text-center">보너스 번호</h4>
           <div className="flex justify-center">
-            <input type="number" className={NumberInputStyle} />
+            <input
+              type="number"
+              className={NumberInputStyle}
+              ref={(el) => (onRef.current[6] = el)}
+            />
           </div>
         </div>
       </div>
-      <button
-        type="button"
-        className="open-result-modal-button mt-5 btn btn-cyan w-100"
-      >
-        결과 확인하기
-      </button>
     </form>
   );
 }
