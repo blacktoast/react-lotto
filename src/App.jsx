@@ -12,7 +12,6 @@ function AppBlock() {
 function App(props) {
   let [tickets, setTickets] = useState([]);
   const [showResultModal, setShowResultModal] = useState(false);
-  let test = useState("test");
   let inputPrice = useRef();
   let inputRefWinningNumber = useRef([]);
 
@@ -49,7 +48,10 @@ function App(props) {
         ></PurchaseForm>
         <TiketInfo tickets={tickets}></TiketInfo>
         <WiningNumberForm onRef={inputRefWinningNumber}></WiningNumberForm>
-        <button className="mt-10 bg-cyan-500/80  text-white w-2/3 mx-16 rounded-lg">
+        <button
+          onClick={setShowResultModal}
+          className="mt-10 bg-cyan-500/80  text-white w-2/3 mx-16 rounded-lg"
+        >
           결과 보기
         </button>
       </main>

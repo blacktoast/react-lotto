@@ -25,7 +25,7 @@ function TiketInfo({ tickets }) {
   );
 
   return (
-    <section class="mt-9 mx-10 sm:w-8/12">
+    <section class="mt-4 mx-10 sm:w-8/12">
       <div class="flex ">
         <label class="flex-auto my-0">
           총 {tickets.length}개를 구매하였습니다.

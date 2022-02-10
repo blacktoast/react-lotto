@@ -1,6 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 
 function CommonBtn({ onClick, children }) {
+  const [inputPrice, setInputPrice] = useState("");
+
   return (
     <button
       type="button"
@@ -27,6 +29,9 @@ function PurchaseForm({ onClick, onRef = null }) {
         />
         <CommonBtn onClick={onClick}> 자동 구매</CommonBtn>
       </div>
+      <p className="text-sm text-red-500 mx-10 mt-2 mt-0">
+        1000원이상 30000원 이하 금액을 입력해주세요
+      </p>
     </form>
   );
 }
