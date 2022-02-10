@@ -36,7 +36,7 @@ function App(props) {
 
   return (
     <>
-      <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center  sm:items-center shadow-gray-800 shadow-lg  backdrop-blur-xl z-0">
+      <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center sm:items-center shadow-gray-800 shadow-lg  backdrop-blur-xl z-0">
         <h1 className="text-center text-3xl	font-bold ">
           <span role="img" aria-label="good-luck">
             🎱
@@ -49,8 +49,11 @@ function App(props) {
         ></PurchaseForm>
         <TiketInfo tickets={tickets}></TiketInfo>
         <WiningNumberForm onRef={inputRefWinningNumber}></WiningNumberForm>
+        <button className="mt-10 bg-cyan-500/80  text-white w-2/3 mx-16 rounded-lg">
+          결과 보기
+        </button>
       </main>
-      {!showResultModal && <Modal />}
+      {showResultModal && <Modal />}
     </>
   );
 }
