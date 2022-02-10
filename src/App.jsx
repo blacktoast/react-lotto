@@ -31,11 +31,14 @@ function App(props) {
     inputPrice.current.value = "";
   }, []);
 
-  console.log(inputRefWinningNumber);
+  const onClickResultModal = () => {
+    setShowResultModal(!showResultModal);
+    console.log(inputRefWinningNumber);
+  };
 
   return (
     <>
-      <main className="w-full h-full mx-auto bg-white flex rounded-2xl  flex-col justify-center sm:items-center shadow-gray-800 shadow-lg  backdrop-blur-xl z-0">
+      <main className="max-w-screen-sm min-h-screen mx-auto bg-white flex rounded-2xl  flex-col justify-center sm:items-center shadow-gray-800 shadow-lg  backdrop-blur-xl z-0 overflow-y-auto">
         <h1 className="text-center text-3xl	font-bold ">
           <span role="img" aria-label="good-luck">
             🎱
@@ -49,13 +52,15 @@ function App(props) {
         <TiketInfo tickets={tickets}></TiketInfo>
         <WiningNumberForm onRef={inputRefWinningNumber}></WiningNumberForm>
         <button
-          onClick={setShowResultModal}
+          onClick={onClickResultModal}
           className="mt-10 bg-cyan-500/80  text-white w-2/3 mx-16 rounded-lg"
         >
           결과 보기
         </button>
       </main>
-      {showResultModal && <Modal />}
+      {showResultModal && (
+        <Modal winningNumbers={inputRefWinningNumber} tickets={tickets} />
+      )}
     </>
   );
 }

@@ -5,16 +5,12 @@
 @tailwind utilities;
 @layer base {
   html {
-    height: 100%;
   }
   body {
     background: #e9ecef;
-    height: 100%;
-    overflow: auto;
   }
   #app {
-    padding: 10px;
-    height: 100%;
+    overflow: hidden;
   }
   /* ... */
 }

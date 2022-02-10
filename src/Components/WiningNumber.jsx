@@ -3,7 +3,6 @@ const NumberInputStyle =
   "mx-1 text-center border-2 w-10 h-10 mt-4 border-black";
 
 function WiningNumberInput({ id, onRef }) {
-  console.log(onRef);
   return (
     <input
       type="number"
