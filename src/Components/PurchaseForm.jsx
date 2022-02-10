@@ -22,7 +22,7 @@ function PurchaseForm({ onClick, onRef = null }) {
     if (parseInt(e.target.value) < 30000) {
       setNumberTickets(Math.floor(parseInt(e.target.value) / 1000));
     } else {
-      setNumberTickets(0);
+      setNumberTickets((e) => (e = 0));
     }
   };
 

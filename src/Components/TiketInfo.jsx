@@ -8,8 +8,8 @@ function TicketDetail({ ticket }) {
   console.log(ticket.number, ticket);
   return (
     <>
-      <span>{ticket.id + 1}번 티켓</span>
-      <span class="mx-1 text-xl">{ticket.number.join(" ")}</span>
+      <span className="text-xl">🎟️ </span>
+      <span className="mx-1 text-xl">{ticket.number.join(" ")}</span>
       <br />
     </>
   );

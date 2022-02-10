@@ -1,11 +1,16 @@
 import React from "react";
+import { useState } from "react/cjs/react.development";
 
-function Modal({ winningNumbers, tickets, onClickModalClose }) {
+function Modal({ onClickModalClose }) {
+  const [prizeList, setPrizeList] = useState("");
+
   return (
-    <section className="w-4/5 h-5/6 mx-auto bg-zinc-50 flex rounded-2xl  flex-col justify-center  sm:items-center shadow-gray-800 shadow-lg z-20 absolute top-12 left-12">
+    <section className="max-w-screen-sm h-5/6 mx-14  bg-zinc-50 flex rounded-2xl  flex-col justify-center  sm:items-center shadow-gray-800 shadow-lg z-20 absolute top-12 left-12  sm:left-1/4 sm:right-1/4">
       <div class="modal-inner p-10">
-        <div class="modal-close prize-modal-close"></div>
-        <div className="modal-close absolute m-4 w-6 top-2 right-2 cursor-pointer after:content-['\00d7'] after:text-5xl after:text-cyan-600"></div>
+        <div
+          className="modal-close absolute m-4 w-6 top-2 right-2 cursor-pointer after:content-['\00d7'] after:text-5xl after:text-cyan-600"
+          onClick={onClickModalClose}
+        ></div>
         <h2 class="text-center">🏆 당첨 통계 🏆</h2>
         <div class="d-flex justify-center">
           <table class="result-table border-collapse border border-black">
